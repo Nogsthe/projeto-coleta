@@ -1,64 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Controle de Coleta - LW Tecnologia</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f0f4f8;
-    }
-  </style>
-</head>
-<body class="bg-gray-100">
-  <header class="bg-green-600 text-white text-center p-4">
-    <h1 class="text-xl font-bold">Controle de Coleta - LW Tecnologia</h1>
-  </header>
-
-  <main class="flex justify-center items-start p-6">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-      <h2 class="text-lg font-bold mb-4">Registrar Nova Coleta</h2>
-      <form id="coletaForm" class="flex flex-col gap-4">
-        <div>
-          <label for="tipo" class="font-semibold">Tipo de Material</label>
-          <select id="tipo" required class="w-full p-2 border rounded">
-            <option value="" disabled selected>Selecione o material</option>
-            <option value="Tampinhas">Tampinhas</option>
-            <option value="Lacres">Lacres</option>
-          </select>
-        </div>
-
-        <div>
-          <p class="font-semibold">Local de Coleta</p>
-          <p><strong>Sede da empresa (fixo)</strong></p>
-          <label for="enderecoExtra" class="block mt-2 text-sm">Adicionar outro endereço (opcional)</label>
-          <input type="text" id="enderecoExtra" placeholder="Digite o endereço (opcional)" class="w-full p-2 border rounded">
-        </div>
-
-        <div>
-          <label for="quantidade" class="font-semibold">Quantidade (em kg)</label>
-          <input type="number" id="quantidade" placeholder="Ex: 10" step="0.1" required class="w-full p-2 border rounded">
-        </div>
-
-        <button type="submit" class="bg-green-600 text-white p-2 rounded hover:bg-green-700">Adicionar Coleta</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Controle de Coleta de Recicláveis</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body class="bg-green-50 font-sans">
+    <div class="container mx-auto p-4">
+      <h1 class="text-2xl font-bold text-center mb-4">Controle de Coleta de Recicláveis</h1>
+      <form id="formColeta" class="flex flex-col md:flex-row items-center gap-4 mb-6">
+        <input
+          type="text"
+          id="tipo"
+          placeholder="Tipo de Material (Ex: Tampinhas)"
+          class="border p-2 rounded w-full md:w-auto"
+          required
+        />
+        <input
+          type="number"
+          id="quantidade"
+          placeholder="Quantidade em kg"
+          class="border p-2 rounded w-full md:w-auto"
+          required
+        />
+        <button
+          type="submit"
+          class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+        >
+          Adicionar Coleta
+        </button>
       </form>
 
-      <h2 class="text-lg font-bold mt-6">Histórico de Coletas</h2>
-      <ul id="listaColetas" class="mt-2"></ul>
-
-      <h2 class="text-lg font-bold mt-6">Gráfico de Coletas</h2>
-      <canvas id="graficoColetas" class="mt-4"></canvas>
+      <canvas id="graficoColeta" class="bg-white p-4 rounded shadow-md"></canvas>
+      <div id="alertaColeta" class="mt-4 text-red-600 font-bold"></div>
     </div>
-  </main>
 
-  <footer class="text-center p-4 text-sm text-gray-600">
-    &copy; 2025 LW Tecnologia | Projeto de Extensão - Meio Ambiente e Saúde
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
+
